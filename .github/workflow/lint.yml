@@ -1,0 +1,21 @@
+name: Python Lint
+
+jobs:
+  lint:
+    name: Running Flake Linter
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8
+
+    - name: Run Flake8 Linter
+      run: |
+        flake8 .
