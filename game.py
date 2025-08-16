@@ -1,7 +1,7 @@
 import pygame
 from player import Player
 from block_group import BlockGroup
-
+from scoreboard import Scoreboard
 class Platformer:
     def __init__(self):
         pygame.init()
@@ -11,6 +11,7 @@ class Platformer:
         self.blocks = BlockGroup()
         self.blocks.create(10)
         self.all_blocks = (self.blocks.all_blocks)
+        self.scoreboard = Scoreboard()
         self.camera_x = 0
         self.camera_y = 0
 
@@ -31,10 +32,14 @@ class Platformer:
 
             self.player.gravity(self.all_blocks)
 
+            self.scoreboard.update_score(500 - int(self.player.y))
+            
             self.screen.fill((0, 0, 0))
 
             self.player.draw(self.screen)
 
             self.all_blocks.draw(self.screen)
+            
+            self.scoreboard.draw(self.screen)
 
             pygame.display.flip()

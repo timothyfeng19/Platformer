@@ -40,6 +40,7 @@ class Player:
         if self.jumps > 0:
             self.yvel = -self.jump_vel
             self.jumps -= 1
+            
 
     def gravity(self, all_blocks):
         self.y += self.yvel
