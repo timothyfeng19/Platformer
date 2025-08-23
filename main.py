@@ -1,4 +1,4 @@
-from game import Platformer
+from src.game import Platformer
 
 if __name__ == "__main__":
     game = Platformer()

@@ -1,7 +1,13 @@
 import pygame
 
+
 def check_collision(self, block):
-        return (self.y + self.height) > block.rect.y and self.y < (block.rect.y + block.rect.height) and self.x < (block.rect.x + block.rect.width) and (self.x + self.width) > block.rect.x
+    return ((self.y + self.height) > block.rect.y and
+            self.y < (block.rect.y + block.rect.height) and
+            self.x < (block.rect.x + block.rect.width) and
+            (self.x + self.width) > block.rect.x
+            )
+
 
 class Player:
     def __init__(self):
@@ -46,19 +52,20 @@ class Player:
         self.yvel += self.fall
         for block in all_blocks:
             if check_collision(self, block):
-                if self.yvel < 0: # if the player is under the block
+                if self.yvel < 0:  # if the player is under the block
                     self.yvel = 0
-                    while self.y < (block.rect.y + block.rect.height): # while the player's head is still in the block
+                    # while the player's head is still in the block
+                    while self.y < (block.rect.y + block.rect.height):
                         self.y += self.pushback
-                else: # if the player is above the block
+                else:  # if the player is above the block
                     self.yvel = 0
                     self.jumps = 2
-                    while (self.y + self.height) > block.rect.y: # while the player's bottom is still in the block
+                    # while the player's bottom is still in the block
+                    while (
+                        (self.y + self.height) > block.rect.y
+                    ):
                         self.y -= self.pushback
         self.image = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 255, 255), self.image)
-
-    
-        

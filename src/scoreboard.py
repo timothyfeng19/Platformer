@@ -1,6 +1,7 @@
 import pygame
 import time
-from player import Player
+from src.player import Player
+
 
 class Scoreboard:
     def __init__(self):
@@ -16,5 +17,7 @@ class Scoreboard:
         self.total_time = self.start_time - current_time
 
     def draw(self, screen):
-        score_txt = self.font.render(f"Height: {self.height}", True, (255, 255, 255))
+        score_txt = self.font.render(
+            f"Height: {self.height}", True, (255, 255, 255)
+        )
         screen.blit(score_txt, (0, 0))

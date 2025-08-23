@@ -1,7 +1,8 @@
 import pygame
-from player import Player
-from block_group import BlockGroup
-from scoreboard import Scoreboard
+from src.player import Player
+from src.block_group import BlockGroup
+from src.scoreboard import Scoreboard
+
 
 class Platformer:
     def __init__(self):
